@@ -1,0 +1,883 @@
+{
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "type": "object",
+    "properties": {
+        "QuestionCount": {
+            "type": "integer"
+        },
+        "SurveyOptions": {
+            "type": "object",
+            "properties": {
+                "AnonymizeResponse": {
+                    "enum": [
+                        "Yes",
+                        "No"
+                    ],
+                    "default": "No"
+                },
+                "Autofocus": {
+                    "type": "boolean"
+                },
+                "Autoadvance": {
+                    "type": "boolean"
+                },
+                "AutoadvancePages": {
+                    "type": "boolean"
+                },
+                "AvailableLanguages": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "BackButton": {
+                    "type": "boolean",
+                    "default": false
+                },
+                "SaveAndContinue": {
+                    "type": "boolean",
+                    "default": true
+                },
+                "SurveyProtection": {
+                    "enum": [
+                        "PublicSurvey",
+                        "ByInvitation",
+                        "PasswordProtected"
+                    ],
+                    "default": "PublicSurvey"
+                },
+                "BallotBoxStuffingPrevention": {
+                    "type": "boolean",
+                    "default": false
+                },
+                "BallotBoxStuffingPreventionBehavior": {
+                    "default": "default",
+                    "enum": [
+                        "default",
+                        "DefaultMessage",
+                        "DisplayMessge",
+                        "Redirect",
+                        "Continue",
+                        null
+                    ]
+                },
+                "BallotBoxStuffingPreventionMessage": {
+                    "type": [
+                        "string",
+                        "null"
+                    ],
+                    "pattern": "^(MS_[a-zA-Z0-9]{11,15})?$"
+                },
+                "BallotBoxStuffingPreventionMessageLibrary": {
+                    "type": "string",
+                    "pattern": "^(UR|GR)_[a-zA-Z0-9]{11,15}$"
+                },
+                "BallotBoxStuffingPreventionURL": {
+                    "type": "string"
+                },
+                "CollectGeoLocation": {
+                    "type": "boolean",
+                    "default": true
+                },
+                "CustomStyles": {
+                    "type": "string"
+                },
+                "EmailThankYou": {
+                    "type": "boolean"
+                },
+                "EOSMessage": {
+                    "type": [
+                        "string",
+                        "null"
+                    ],
+                    "pattern": "^(MS_[a-zA-Z0-9]{11,15})?$"
+                },
+                "EOSRedirectURL": {
+                    "type": "string"
+                },
+                "ExternalCSS": {
+                    "type": "string"
+                },
+                "InactiveSurvey": {
+                    "enum": [
+                        "DefaultMessage",
+                        "DisplayMessge",
+                        null
+                    ]
+                },
+                "InactiveMessage": {
+                    "type": [
+                        "string",
+                        "null"
+                    ],
+                    "pattern": "^(MS_[a-zA-Z0-9]{11,15})?$"
+                },
+                "InactiveMessageLibrary": {
+                    "type": "string",
+                    "pattern": "^(UR|GR)_[a-zA-Z0-9]{11,15}$"
+                },
+                "NoIndex": {
+                    "enum": [
+                        "Yes",
+                        "No"
+                    ],
+                    "default": "Yes"
+                },
+                "PageTransition": {
+                    "enum": [
+                        "None",
+                        "Slide",
+                        "Fade",
+                        "Flip",
+                        "Barrel"
+                    ],
+                    "default": "None"
+                },
+                "SecureResponseFiles": {
+                    "type": "boolean",
+                    "default": true
+                },
+                "SurveyExpiration": {
+                    "enum": [
+                        "on",
+                        "null",
+                        "DateRange",
+                        "None"
+                    ],
+                    "default": "null"
+                },
+                "SurveyTermination": {
+                    "enum": [
+                        "DefaultMessage",
+                        "DisplayMessge",
+                        "DisplayResult",
+                        "ResponseSummary",
+                        "Redirect",
+                        "null"
+                    ]
+                },
+                "SurveyTitle": {
+                    "type": "string"
+                },
+                "ThankYouEmailMessage": {
+                    "type": [
+                        "string",
+                        "null"
+                    ],
+                    "pattern": "^(MS_[a-zA-Z0-9]{11,15})?$"
+                },
+                "ThankYouEmailMessageLibrary": {
+                    "type": "string",
+                    "pattern": "^(UR|GR)_[a-zA-Z0-9]{11,15}$"
+                },
+                "ValidateMessage": {
+                    "type": "boolean",
+                    "default": false
+                },
+                "Header": {
+                    "type": "string"
+                },
+                "Footer": {
+                    "type": "string"
+                },
+                "ProgressBarDisplay": {
+                    "enum": [
+                        "None",
+                        "Text",
+                        "NoText",
+                        "VerboseText"
+                    ],
+                    "default": "None"
+                },
+                "QuestionsPerPage": {
+                    "type": "integer"
+                },
+                "RecaptchaV3": {
+                    "type": "boolean"
+                },
+                "ReferCheck": {
+                    "enum": [
+                        "Yes",
+                        "No"
+                    ]
+                },
+                "RefererURL": {
+                    "type": "string"
+                },
+                "ResponseSummary": {
+                    "enum": [
+                        "Yes",
+                        "No"
+                    ],
+                    "default": "No"
+                },
+                "PartialData": {
+                    "enum": [
+                        "No",
+                        "+1 hour",
+                        "+4 hour",
+                        "+1 day",
+                        "+2 days",
+                        "+3 days",
+                        "+1 week",
+                        "+2 weeks",
+                        "+1 month",
+                        "+3 months",
+                        "+6 months",
+                        "+1 year"
+                    ],
+                    "default": "+1 week"
+                },
+                "PartialDataCloseAfter": {
+                    "enum": [
+                        "LastActivity",
+                        "SurveyStart"
+                    ]
+                },
+                "Password": {
+                    "type": "string"
+                },
+                "PasswordProtection": {
+                    "enum": [
+                        "Yes",
+                        "No"
+                    ],
+                    "default": "No"
+                },
+                "ValidationMessage": {
+                    "type": [
+                        "string",
+                        "null"
+                    ],
+                    "pattern": "^(MS_[a-zA-Z0-9]{11,15})?$"
+                },
+                "ValidationMessageLibrary": {
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "PreviousButton": {
+                    "type": "string"
+                },
+                "NextButton": {
+                    "type": "string"
+                },
+                "SkinLibrary": {
+                    "type": "string"
+                },
+                "SkinType": {
+                    "type": "string"
+                },
+                "Skin": {
+                    "type": "object",
+                    "properties": {
+                        "brandingId": {
+                            "type": [
+                                "string",
+                                "null"
+                            ]
+                        },
+                        "templateId": {
+                            "type": [
+                                "string",
+                                "null"
+                            ]
+                        },
+                        "overrides": {
+                            "type": [
+                                "string",
+                                "null"
+                            ]
+                        }
+                    },
+                    "required": [
+                        "brandingId",
+                        "templateId",
+                        "overrides"
+                    ]
+                },
+                "NewScoring": {
+                    "type": "integer"
+                },
+                "SurveyLanguage": {
+                    "enum": [
+                        "AR",
+                        "ASM",
+                        "AZ-AZ",
+                        "BEL",
+                        "BG",
+                        "BN",
+                        "BS",
+                        "CA",
+                        "CEB",
+                        "CH",
+                        "CS",
+                        "CY",
+                        "DA",
+                        "DE",
+                        "EL",
+                        "EN_GB",
+                        "EN-US",
+                        "EN",
+                        "EO",
+                        "ES-ES",
+                        "ES",
+                        "ET",
+                        "FA",
+                        "FI",
+                        "FR-CA",
+                        "FR",
+                        "GU",
+                        "HE",
+                        "HE-ZA",
+                        "HI",
+                        "HIL",
+                        "HR",
+                        "HU",
+                        "HYE",
+                        "ID",
+                        "ISL",
+                        "IT",
+                        "JA",
+                        "KAN",
+                        "KAT",
+                        "KAZ",
+                        "KM",
+                        "KO",
+                        "LT",
+                        "LV",
+                        "MAL",
+                        "MAR",
+                        "MK",
+                        "MN",
+                        "MS",
+                        "MY",
+                        "NL",
+                        "NO",
+                        "ORI",
+                        "PA-IN",
+                        "PL",
+                        "PT-BR",
+                        "PT",
+                        "RO",
+                        "RU",
+                        "SIN",
+                        "SK",
+                        "SL",
+                        "SQI",
+                        "SR-ME",
+                        "SR",
+                        "SV",
+                        "SW",
+                        "TA",
+                        "TEL",
+                        "TGL",
+                        "TH",
+                        "TR",
+                        "UK",
+                        "UR",
+                        "VI",
+                        "ZH-S",
+                        "ZH-T"
+                    ]
+                },
+                "ActiveResponseSet": {
+                    "type": "string"
+                },
+                "SurveyStartDate": {
+                    "type": [
+                        "null",
+                        "string"
+                    ]
+                },
+                "SurveyExpirationDate": {
+                    "type": [
+                        "null",
+                        "string"
+                    ]
+                },
+                "SurveyCreationDate": {
+                    "type": "string"
+                }
+            },
+            "additionalProperties": true,
+            "required": [
+                "BackButton",
+                "SaveAndContinue",
+                "SurveyProtection",
+                "BallotBoxStuffingPrevention",
+                "NoIndex",
+                "SecureResponseFiles",
+                "SurveyExpiration",
+                "SurveyTermination",
+                "Header",
+                "Footer",
+                "ProgressBarDisplay",
+                "PartialData",
+                "ValidationMessage",
+                "PreviousButton",
+                "NextButton",
+                "SkinLibrary",
+                "SkinType",
+                "Skin",
+                "NewScoring",
+                "SurveyLanguage",
+                "ActiveResponseSet",
+                "SurveyStartDate",
+                "SurveyExpirationDate",
+                "SurveyCreationDate"
+            ]
+        },
+        "SurveyID": {
+            "type": "string",
+            "pattern": "^SV_[a-zA-Z0-9]{11,15}$"
+        },
+        "SurveyName": {
+            "type": "string"
+        },
+        "SurveyStatus": {
+            "enum": [
+                "Inactive",
+                "Active",
+                "Pending",
+                "LibBlock",
+                "Deactive",
+                "Temporary"
+            ]
+        },
+        "LastModified": {
+            "type": "string"
+        },
+        "BrandID": {
+            "type": "string"
+        },
+        "OwnerID": {
+            "type": "string",
+            "pattern": "^UR_[a-zA-Z0-9]{11,15}$"
+        },
+        "DivisionID": {
+            "type": "string",
+            "pattern": "^DV_[a-zA-Z0-9]{11,15}$"
+        },
+        "LastAccessed": {
+            "type": "null"
+        },
+        "CreatorID": {
+            "type": "string",
+            "pattern": "^UR_[a-zA-Z0-9]{11,15}$"
+        },
+        "LastActivated": {
+            "type": "null"
+        },
+        "Questions": {
+            "type": "array",
+            "items": {
+                "type": "object",
+                "properties": {
+                    "ChoiceOrder": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        }
+                    },
+                    "Choices": {
+                        "type": "object",
+                        "additionalProperties": true
+                    },
+                    "Configuration": {
+                        "type": "object",
+                        "properties": {
+                            "QesutionDescriptionOption": {
+                                "enum": [
+                                    "UseText",
+                                    "SpecifyLabel"
+                                ]
+                            },
+                            "TextPosition": {
+                                "enum": [
+                                    "inline"
+                                ]
+                            },
+                            "ChoiceColumnWidth": {
+                                "type": "integer"
+                            },
+                            "Language": {
+                                "type": "array",
+                                "items": {
+                                    "type": "string"
+                                }
+                            },
+                            "NextAnswerId": {
+                                "type": "integer"
+                            },
+                            "NextChoiceId": {
+                                "type": "integer"
+                            },
+                            "QuestionDescription": {
+                                "type": "string"
+                            },
+                            "QuestionID": {
+                                "type": "string",
+                                "pattern": "^QID[a-zA-Z0-9]+$"
+                            },
+                            "QuestionText": {
+                                "type": "string"
+                            },
+                            "QuestionType": {
+                                "enum": [
+                                    "MC"
+                                ]
+                            },
+                            "Randomization": {
+                                "enum": [
+                                    "None"
+                                ]
+                            },
+                            "RecodeValues": {
+                                "type": "object",
+                                "additionalProperties": true
+                            },
+                            "Selector": {
+                                "enum": [
+                                    "DL",
+                                    "GRB",
+                                    "MACOL",
+                                    "MAHR",
+                                    "MAVR",
+                                    "MSB",
+                                    "NPS",
+                                    "SACOL",
+                                    "SAHR",
+                                    "SAVR",
+                                    "SB",
+                                    "TB",
+                                    "TXOT",
+                                    "PTB"
+                                ]
+                            },
+                            "SubSelector": {
+                                "enum": [
+                                    "GR",
+                                    "TX",
+                                    "TXOT",
+                                    "WOTXB",
+                                    "WTXB"
+                                ]
+                            },
+                            "Validation": {
+                                "type": "object",
+                                "properties": {
+                                    "ForceResponse": {
+                                        "type": "string"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "Blocks": {
+            "type": "array",
+            "items": {
+                "type": "object",
+                "properties": {
+                    "ID": {
+                        "type": "string",
+                        "pattern": "^BL_[a-zA-Z0-9]{11,15}$"
+                    },
+                    "Type": {
+                        "enum": [
+                            "Standard",
+                            "Trash",
+                            "ExperienceBlock",
+                            "Default"
+                        ],
+                        "default": "Standard"
+                    },
+                    "Description": {
+                        "type": "string"
+                    },
+                    "BlockElements": {
+                        "type": "array",
+                        "items": {
+                            "type": "object",
+                            "properties": {
+                                "Type": {
+                                    "enum": [
+                                        "Question",
+                                        "PageBreak"
+                                    ]
+                                },
+                                "QuestionID": {
+                                    "type": "string",
+                                    "pattern": "^QID[a-zA-Z0-9]+$"
+                                },
+                                "SkipLogic": {
+                                    "type": "object",
+                                    "properties": {}
+                                }
+                            }
+                        }
+                    }
+                },
+                "required": [
+                    "ID"
+                ]
+            }
+        },
+        "ResponseSets": {
+            "type": "object"
+        },
+        "SurveyFlow": {
+            "type": "object",
+            "properties": {
+                "Flow": {
+                    "type": "array",
+                    "items": {
+                        "type": "object",
+                        "properties": {
+                            "FlowID": {
+                                "type": "string"
+                            },
+                            "Type": {
+                                "type": "string"
+                            },
+                            "Flow": {
+                                "type": "array",
+                                "items": {
+                                    "type": "object",
+                                    "additionalProperties": true,
+                                    "required": [
+                                        "ID",
+                                        "Type",
+                                        "FlowID"
+                                    ]
+                                },
+                                "additionalItems": true
+                            },
+                            "Properties": {
+                                "type": "object",
+                                "properties": {
+                                    "Count": {
+                                        "type": "integer"
+                                    }
+                                },
+                                "additionalProperties": true,
+                                "required": [
+                                    "Count"
+                                ]
+                            }
+                        },
+                        "additionalProperties": true,
+                        "required": [
+                            "FlowID",
+                            "Type",
+                            "Flow",
+                            "Properties"
+                        ]
+                    },
+                    "additionalItems": true
+                },
+                "Properties": {
+                    "type": "object",
+                    "properties": {
+                        "Count": {
+                            "type": "integer"
+                        }
+                    },
+                    "additionalProperties": true,
+                    "required": [
+                        "Count"
+                    ]
+                },
+                "FlowID": {
+                    "type": "string",
+                    "pattern": "^FL_[1-9][0-9]*$"
+                },
+                "Type": {
+                    "enum": [
+                        "Authenticator",
+                        "Block",
+                        "BlockRandomizer",
+                        "Branch",
+                        "Conjoint",
+                        "EmbeddedData",
+                        "EndSurvey",
+                        "Group",
+                        "QuotaCheck",
+                        "ReferenceSurvey",
+                        "Root",
+                        "Standard",
+                        "SupplementalData",
+                        "TableOfContents",
+                        "WebService"
+                    ]
+                }
+            },
+            "required": [
+                "Flow",
+                "Properties",
+                "FlowID",
+                "Type"
+            ]
+        },
+        "Scoring": {
+            "type": "object",
+            "properties": {
+                "ScoringCategories": {
+                    "type": "array",
+                    "items": {
+                        "type": "object",
+                        "properties": {
+                            "ID": {
+                                "type": "string"
+                            },
+                            "Name": {
+                                "type": "string"
+                            },
+                            "Description": {
+                                "type": "string",
+                                "enum": [
+                                    ""
+                                ]
+                            }
+                        },
+                        "additionalProperties": true,
+                        "required": [
+                            "ID",
+                            "Name",
+                            "Description"
+                        ]
+                    },
+                    "additionalItems": true
+                },
+                "ScoringCategoryGroups": {
+                    "type": "array",
+                    "items": {
+                        "items": {},
+                        "additionalItems": true,
+                        "additionalProperties": true
+                    },
+                    "additionalItems": true
+                },
+                "DefaultScoringCategory": {
+                    "type": "string",
+                    "pattern": "^SC_[a-zA-Z0-9]{11,15}$"
+                },
+                "ScoringSummaryCategory": {
+                    "type": "string",
+                    "pattern": "^SC_[a-zA-Z0-9]{11,15}$"
+                },
+                "ScoringSummaryAfterQuestions": {
+                    "type": "boolean"
+                },
+                "ScoringSummaryAfterSurvey": {
+                    "type": "boolean"
+                },
+                "AutoScoringCategory": {
+                    "type": "null"
+                },
+                "IgnoreNullValues": {
+                    "type": "boolean"
+                }
+            },
+            "additionalProperties": true,
+            "required": [
+                "ScoringCategories",
+                "ScoringCategoryGroups",
+                "DefaultScoringCategory",
+                "ScoringSummaryCategory",
+                "ScoringSummaryAfterQuestions",
+                "ScoringSummaryAfterSurvey",
+                "AutoScoringCategory",
+                "IgnoreNullValues"
+            ]
+        },
+        "ProjectInfo": {
+            "type": "object",
+            "properties": {
+                "SurveyID": {
+                    "type": "string",
+                    "pattern": "^SV_[a-zA-Z0-9]{11,15}$"
+                },
+                "ProjectCategory": {
+                    "type": "string"
+                },
+                "ProjectType": {
+                    "type": "string"
+                },
+                "SchemaVersion": {
+                    "type": "string"
+                },
+                "CompositionType": {
+                    "type": "string"
+                },
+                "ContentBundle": {
+                    "type": "object",
+                    "properties": {
+                        "BundleShortName": {
+                            "type": "string"
+                        },
+                        "RegistrySha": {
+                            "type": "string"
+                        },
+                        "RegistryVersion": {
+                            "type": "string"
+                        },
+                        "SurveyInputVariables": {
+                            "type": "array",
+                            "items": {
+                                "type": "object",
+                                "additionalProperties": true
+                            },
+                            "additionalItems": true
+                        }
+                    },
+                    "additionalProperties": true,
+                    "required": [
+                        "BundleShortName",
+                        "RegistrySha",
+                        "RegistryVersion",
+                        "SurveyInputVariables"
+                    ]
+                }
+            },
+            "additionalProperties": true,
+            "required": [
+                "SurveyID",
+                "ProjectCategory",
+                "ProjectType",
+                "SchemaVersion",
+                "CompositionType",
+                "ContentBundle"
+            ]
+        },
+        "BrandBaseURL": {
+            "type": "string"
+        }
+    },
+    "additionalProperties": true,
+    "required": [
+        "QuestionCount",
+        "SurveyOptions",
+        "SurveyID",
+        "SurveyName",
+        "SurveyStatus",
+        "LastModified",
+        "BrandID",
+        "OwnerID",
+        "DivisionID",
+        "LastAccessed",
+        "CreatorID",
+        "LastActivated",
+        "Questions",
+        "Blocks",
+        "ResponseSets",
+        "SurveyFlow",
+        "Scoring",
+        "ProjectInfo",
+        "BrandBaseURL"
+    ]
+}
