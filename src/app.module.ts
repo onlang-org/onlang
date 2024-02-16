@@ -1,11 +1,10 @@
 import { Module } from '@nestjs/common';
-import { AppController } from './app.controller';
-import { AppService } from './app.service';
-import { ONLangModule } from './engine/onlang.module';
+import { ConfigModule } from '@nestjs/config';
+import { CompileCommand } from './commands/compile';
 
 @Module({
-  imports: [ONLangModule],
-  controllers: [AppController],
-  providers: [AppService],
+  imports: [ConfigModule.forRoot({ cache: true, isGlobal: true })],
+  controllers: [],
+  providers: [CompileCommand],
 })
 export class AppModule { }
