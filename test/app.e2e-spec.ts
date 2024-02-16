@@ -21,4 +21,20 @@ describe('AppController (e2e)', () => {
       .expect(200)
       .expect('Hello World!');
   });
+
+  it('/process-onlang (GET)', () => {
+    return request(app.getHttpServer())
+      .get('/process-onlang?code=object SampleObject generate-code')
+      .expect(200)
+      .expect({
+        type: 'object',
+        name: 'SampleObject',
+        properties: [],
+        commands: [ 'generate-code' ]
+      });
+  })
+
+  afterAll(async () => {
+    await app.close();
+  })
 });
