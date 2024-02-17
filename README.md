@@ -5,14 +5,14 @@
 
 # ONLang
 
+built with [NestJS](https://nestjs.com/)
+
+![build status](https://github.com/github/docs/actions/workflows/npm-test.yml/badge.svg)
 [![npm version](https://img.shields.io/npm/v/on-lang.svg)](https://www.npmjs.com/package/on-lang)
 [![npm downloads](https://img.shields.io/npm/dm/on-lang.svg)](https://www.npmjs.com/package/on-lang)
 [![GitHub license](https://img.shields.io/github/license/rajatasusual/on-lang.svg)](https://github.com/rajatasusual/on-lang/blob/main/LICENSE)
-[![GitHub stars](https://img.shields.io/github/stars/rajatasusual/on-lang)](https://github.com/rajatasusual/on-lang/stargazers)
 [![GitHub forks](https://img.shields.io/github/forks/rajatasusual/on-lang)](https://github.com/rajatasusual/on-lang/network)
 [![GitHub issues](https://img.shields.io/github/issues/rajatasusual/on-lang)](https://github.com/rajatasusual/on-lang/issues)
-[![GitHub pull requests](https://img.shields.io/github/issues-pr/rajatasusual/on-lang)](https://github.com/rajatasusual/on-lang/pulls)
-[![GitHub contributors](https://img.shields.io/github/contributors/rajatasusual/on-lang)](https://github.com/rajatasusual/on-lang/graphs/contributors)
 
 ## Description
 > **_NOTE:_**  This Language is in active development. Please read current stage of development [here](#stage)
