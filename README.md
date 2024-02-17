@@ -28,13 +28,23 @@ ONLang (Object Notation Language) is a markup-style programming language designe
 To install ONLang, run the following command:
 
 ```bash
-npm install onlang
+npm install -g onlang
 ```
+This will install the ONLang package globally. 
 
 ## Usage
 
 ```bash
-onlang [files]
+onlang [files(optional)]
+```
+
+> **_NOTE:_** You need node.js installed to use ONLang. See [here](https://nodejs.org/en/download/) for installation instructions.
+
+files is optional. Without it, ONLang will read and compile all files in the current directory taking the schema path from the `onlang.schemaPath` config in .env file.
+
+## Configuring .env file
+```bash
+onlang.schemaPath=src/schemas
 ```
 
 ## Command Options
