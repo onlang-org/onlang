@@ -42,6 +42,13 @@ onlang [files(optional)]
 
 files is optional. Without it, ONLang will read and compile all files in the current directory taking the schema path from the `onlang.schemaPath` config in .env file.
 
+
+## Examples
+
+```bash
+onlang test_schema.json test_schema2.json
+```
+
 ## Configuring .env file
 ```bash
 onlang.schemaPath=src/schemas
