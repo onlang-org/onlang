@@ -62,7 +62,7 @@ export class CompileCommand extends CommandRunner {
    */
   private async read(params: string[]): Promise<string[]> {
 
-    let foundFIles = [];
+    let foundFiles = [];
     if (params.length === 0) {
       const schemaPath = this.configService.get('onlang.schemaPath');
       console.log(`Schema Directory: ${schemaPath}`);
@@ -72,7 +72,7 @@ export class CompileCommand extends CommandRunner {
         const files = await this.listFilesInDirectory(schemaPath);
         files.forEach(file => {
           console.log(`Schema: ${file}`);
-          foundFIles.push(`${schemaPath}/${file}`);
+          foundFiles.push(`${schemaPath}/${file}`);
         });
       } catch (error) {
         throw new Error(`Error listing files: ${error.message}`);
@@ -80,7 +80,7 @@ export class CompileCommand extends CommandRunner {
     } else {
       params.forEach(file => {
         if (fs.existsSync(file)) {
-          foundFIles.push(file);
+          foundFiles.push(file);
           console.log(`Schema: ${file} exists'}`);
         } else {
           console.log(`Schema: ${file} does not exist`);
@@ -89,7 +89,7 @@ export class CompileCommand extends CommandRunner {
       })
     }
 
-    return foundFIles;
+    return foundFiles;
   }
 
   /**
@@ -98,7 +98,7 @@ export class CompileCommand extends CommandRunner {
    * @param {string} file - the file to compile
    * @return {Promise<void>} a Promise that resolves when the compilation is complete
    */
-  private async compile(file: string): Promise<void> {
+  async compile(file: string): Promise<void> {
     try{
       fs.writeFileSync(`${path.parse(file).dir}/${path.parse(file).name}.ts`, await compileFromFile(file));
       console.log(`Compiled ${path.parse(file).dir}/${path.parse(file).name}.ts`);

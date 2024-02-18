@@ -5,9 +5,9 @@
 
 # ONLang
 
-built with [NestJS](https://nestjs.com/)
+> **_NOTE:_** Built on top of [TypeScript](https://www.typescriptlang.org/) and [NestJS](https://nestjs.com/)
 
-![build status](https://github.com/github/docs/actions/workflows/npm-test.yml/badge.svg)
+[![Node.js Package](https://github.com/rajatasusual/on-lang/actions/workflows/npm-test.yml/badge.svg)](https://github.com/rajatasusual/on-lang/actions/workflows/npm-test.yml)
 [![npm version](https://img.shields.io/npm/v/on-lang.svg)](https://www.npmjs.com/package/on-lang)
 [![npm downloads](https://img.shields.io/npm/dm/on-lang.svg)](https://www.npmjs.com/package/on-lang)
 [![GitHub license](https://img.shields.io/github/license/rajatasusual/on-lang.svg)](https://github.com/rajatasusual/on-lang/blob/main/LICENSE)
