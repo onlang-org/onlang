@@ -27,10 +27,12 @@ describe('CompileCommand', () => {
 
   afterEach(() => {
     const files = readdirSync(path.resolve(__dirname + '/../test_data'));
-    files.filter(file => path.parse(file).ext === '.ts').forEach(file => {
-      unlinkSync(path.resolve(__dirname + '/../test_data/' + file));
-    });
-  })
+    files
+      .filter((file) => path.parse(file).ext === '.ts')
+      .forEach((file) => {
+        unlinkSync(path.resolve(__dirname + '/../test_data/' + file));
+      });
+  });
 
   describe('run', () => {
     it('should call readAndCompile with passed parameters', async () => {
@@ -52,7 +54,11 @@ describe('CompileCommand', () => {
       await compileCommand.readAndCompile([], options);
 
       expect(compileSpy).toHaveBeenCalledTimes(2);
-      expect(readdirSync(path.resolve(__dirname + '/../test_data')).filter(file => path.parse(file).ext === '.ts').length).toBe(2);
+      expect(
+        readdirSync(path.resolve(__dirname + '/../test_data')).filter(
+          (file) => path.parse(file).ext === '.ts',
+        ).length,
+      ).toBe(2);
     });
 
     it('should call compile for file provided as parameter', async () => {
@@ -64,7 +70,11 @@ describe('CompileCommand', () => {
       await compileCommand.readAndCompile(params, options);
 
       expect(compileSpy).toHaveBeenCalledTimes(1);
-      expect(readdirSync(path.resolve(__dirname + '/../test_data')).filter(file => path.parse(file).ext === '.ts').length).toBe(1);
+      expect(
+        readdirSync(path.resolve(__dirname + '/../test_data')).filter(
+          (file) => path.parse(file).ext === '.ts',
+        ).length,
+      ).toBe(1);
     });
   });
 

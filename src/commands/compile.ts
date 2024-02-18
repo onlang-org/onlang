@@ -4,16 +4,19 @@ import * as fs from 'fs';
 import { compileFromFile } from '@rajatasusual/json-schema-2-ts';
 import path from 'path';
 
-interface ONLangCommandOptions {
-}
+interface ONLangCommandOptions {}
 
-@Command({ name: 'compile', description: 'Compile JSON schema for ONLang', options: { isDefault: true } })
+@Command({
+  name: 'compile',
+  description: 'Compile JSON schema for ONLang',
+  options: { isDefault: true },
+})
 export class CompileCommand extends CommandRunner {
   /**
    * Constructor for initializing the ConfigService.
    *
    * @param {ConfigService} configService - the configuration service
-   * @return {void} 
+   * @return {void}
    */
   constructor(private readonly configService: ConfigService) {
     super();
@@ -26,7 +29,10 @@ export class CompileCommand extends CommandRunner {
    * @param {ONLangCommandOptions} options - description of parameter
    * @return {Promise<void>} description of return value
    */
-  async run(passedParams: string[], options?: ONLangCommandOptions): Promise<void> {
+  async run(
+    passedParams: string[],
+    options?: ONLangCommandOptions,
+  ): Promise<void> {
     await this.readAndCompile(passedParams, options);
   }
 
@@ -37,7 +43,10 @@ export class CompileCommand extends CommandRunner {
    * @param {ONLangCommandOptions} [options] - optional command options
    * @return {Promise<void>} a Promise that resolves when the files are read and compiled
    */
-  async readAndCompile(params: string[], options?: ONLangCommandOptions): Promise<void> {
+  async readAndCompile(
+    params: string[],
+    options?: ONLangCommandOptions,
+  ): Promise<void> {
     const files = await this.read(params);
 
     if (files.length === 0) {
@@ -46,12 +55,11 @@ export class CompileCommand extends CommandRunner {
     } else {
       console.log(`Compiling ${files.length} files`);
 
-      files.forEach(async file => {
+      files.forEach(async (file) => {
         console.log(`Compiling ${file}`);
-        await this.compile(file)
+        await this.compile(file);
       });
     }
-
   }
 
   /**
@@ -61,7 +69,6 @@ export class CompileCommand extends CommandRunner {
    * @return {Promise<string[]>} array of found files
    */
   private async read(params: string[]): Promise<string[]> {
-
     let foundFiles = [];
     if (params.length === 0) {
       const schemaPath = this.configService.get('onlang.schemaPath');
@@ -70,7 +77,7 @@ export class CompileCommand extends CommandRunner {
       //all files in directory schemaPath
       try {
         const files = await this.listFilesInDirectory(schemaPath);
-        files.forEach(file => {
+        files.forEach((file) => {
           console.log(`Schema: ${file}`);
           foundFiles.push(`${schemaPath}/${file}`);
         });
@@ -78,15 +85,14 @@ export class CompileCommand extends CommandRunner {
         throw new Error(`Error listing files: ${error.message}`);
       }
     } else {
-      params.forEach(file => {
+      params.forEach((file) => {
         if (fs.existsSync(file)) {
           foundFiles.push(file);
           console.log(`Schema: ${file} exists'}`);
         } else {
           console.log(`Schema: ${file} does not exist`);
         }
-
-      })
+      });
     }
 
     return foundFiles;
@@ -99,9 +105,14 @@ export class CompileCommand extends CommandRunner {
    * @return {Promise<void>} a Promise that resolves when the compilation is complete
    */
   async compile(file: string): Promise<void> {
-    try{
-      fs.writeFileSync(`${path.parse(file).dir}/${path.parse(file).name}.ts`, await compileFromFile(file));
-      console.log(`Compiled ${path.parse(file).dir}/${path.parse(file).name}.ts`);
+    try {
+      fs.writeFileSync(
+        `${path.parse(file).dir}/${path.parse(file).name}.ts`,
+        await compileFromFile(file),
+      );
+      console.log(
+        `Compiled ${path.parse(file).dir}/${path.parse(file).name}.ts`,
+      );
     } catch (error) {
       throw new Error(`Error compiling ${file}: ${error.message}`);
     }
@@ -121,9 +132,11 @@ export class CompileCommand extends CommandRunner {
         if (err) {
           reject(err);
         } else {
-          resolve(files.filter(file => {
-            return re.exec(file)[1].toLocaleLowerCase() === 'json';
-          }));
+          resolve(
+            files.filter((file) => {
+              return re.exec(file)[1].toLocaleLowerCase() === 'json';
+            }),
+          );
         }
       });
     });
