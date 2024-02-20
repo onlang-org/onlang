@@ -1,10 +1,13 @@
 import { Module } from '@nestjs/common';
+import { CommandModule } from './command.module';
+import { CompileService } from './services/compile.service';
 import { ConfigModule } from '@nestjs/config';
-import { CompileCommand } from './commands/compile';
 
 @Module({
-  imports: [ConfigModule.forRoot({ cache: true, isGlobal: true })],
-  controllers: [],
-  providers: [CompileCommand],
+  imports: [
+    ConfigModule.forRoot({ cache: true, isGlobal: true }),
+    CommandModule,
+  ],
+  providers: [CompileService],
 })
-export class AppModule { }
+export class AppModule {}
