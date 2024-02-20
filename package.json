@@ -13,9 +13,10 @@
     "url": "git+https://github.com/rajatasusual/on-lang.git"
   },
   "scripts": {
-    "build": "nest build",
+    "build": "npm run format && nest build",
     "format": "prettier --write \"src/**/*.ts\" \"test/**/*.ts\"",
     "start": "nest start",
+    "start:cli": "ts-node src/main.ts",
     "start:dev": "nest start --watch",
     "start:debug": "nest start --debug --watch",
     "start:prod": "node dist/main",
@@ -34,7 +35,8 @@
     "@nestjs/common": "^10.3.3",
     "@nestjs/config": "^3.2.0",
     "@nestjs/core": "^10.3.3",
-    "@rajatasusual/json-schema-2-ts": "^13.1.2-7",
+    "ajv": "^8.12.0",
+    "ajv-formats": "^2.1.1",
     "nest-commander": "^3.12.5"
   },
   "devDependencies": {
@@ -49,6 +51,7 @@
     "eslint": "^8.42.0",
     "eslint-config-prettier": "^9.0.0",
     "eslint-plugin-prettier": "^5.0.0",
+    "nest-commander-testing": "^3.3.0",
     "prettier": "^3.0.0",
     "ts-jest": "^29.1.0",
     "ts-node": "^10.9.1",
