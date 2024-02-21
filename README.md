@@ -1,18 +1,18 @@
-[npm]: https://www.npmjs.com/package/onlang
-[github]: https://github.com/rajatasusual/onlang
-[readme]: https://github.com/rajatasusual/onlang/blob/main/README.md
+[npm]: https://www.npmjs.com/package/on-lang
+[github]: https://github.com/rajatasusual/on-lang
+[readme]: https://github.com/rajatasusual/on-lang/blob/main/README.md
 [twitter]: https://twitter.com/rajatasusual
 
 # ONLang
 
 > **_NOTE:_** Built on top of [TypeScript](https://www.typescriptlang.org/) and [NestJS](https://nestjs.com/)
 
-[![Node.js Package](https://github.com/rajatasusual/onlang/actions/workflows/npm-test.yml/badge.svg)](https://github.com/rajatasusual/onlang/actions/workflows/npm-test.yml)
-[![npm version](https://img.shields.io/npm/v/onlang.svg)](https://www.npmjs.com/package/onlang)
-[![npm downloads](https://img.shields.io/npm/dm/onlang.svg)](https://www.npmjs.com/package/onlang)
-[![GitHub license](https://img.shields.io/github/license/rajatasusual/onlang.svg)](https://github.com/rajatasusual/onlang/blob/main/LICENSE)
-[![GitHub forks](https://img.shields.io/github/forks/rajatasusual/onlang)](https://github.com/rajatasusual/onlang/network)
-[![GitHub issues](https://img.shields.io/github/issues/rajatasusual/onlang)](https://github.com/rajatasusual/onlang/issues)
+[![Node.js Package](https://github.com/rajatasusual/on-lang/actions/workflows/npm-test.yml/badge.svg)](https://github.com/rajatasusual/on-lang/actions/workflows/npm-test.yml)
+[![npm version](https://img.shields.io/npm/v/on-lang.svg)](https://www.npmjs.com/package/on-lang)
+[![npm downloads](https://img.shields.io/npm/dm/on-lang.svg)](https://www.npmjs.com/package/on-lang)
+[![GitHub license](https://img.shields.io/github/license/rajatasusual/on-lang.svg)](https://github.com/rajatasusual/on-lang/blob/main/LICENSE)
+[![GitHub forks](https://img.shields.io/github/forks/rajatasusual/on-lang)](https://github.com/rajatasusual/on-lang/network)
+[![GitHub issues](https://img.shields.io/github/issues/rajatasusual/on-lang)](https://github.com/rajatasusual/on-lang/issues)
 
 ## Description
 > **_NOTE:_**  This Language is in active development. Please read current stage of development [here](#stage)
@@ -28,7 +28,7 @@ ONLang (Object Notation Language) is a markup-style programming language designe
 To install ONLang, run the following command:
 
 ```bash
-npm install -g onlang
+npm install -g on-lang
 ```
 This will install the ONLang package globally. 
 
