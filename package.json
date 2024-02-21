@@ -83,6 +83,9 @@
     "parser",
     "schema",
     "json",
-    "markup"
+    "markup",
+    "language",
+    "transpiler",
+    "ajv"
   ]
 }

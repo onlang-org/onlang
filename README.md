@@ -28,7 +28,7 @@ ONLang (Object Notation Language) is a markup-style programming language designe
 To install ONLang, run the following command:
 
 ```bash
-npm install -g onlang
+npm install -g on-lang
 ```
 This will install the ONLang package globally. 
 
@@ -64,7 +64,7 @@ onlang.schemaPath=src/schemas
 ### [DONE] Step 1: Read and Compile
 - **JSON Schema Conversion**:
 ONLang dynamically generates JSON schemas for objects from external systems (Qualtrics, Salesforce, etc.).
-These JSON schemas are converted into TypeScript classes using @rajatasusual/json-schema-2-ts.
+These JSON schemas are validated using Ajv[here](https://github.com/ajv-validator/ajv) and are used to generate TypeScript classes.
 
 ### Step 2: ONLang Scripting:
 Users create ONLang scripts that involve the creation of objects (e.g., Qualtrics survey) using the TypeScript classes generated from JSON schemas.
@@ -80,3 +80,9 @@ Verifies the syntax and hierarchy of the ONLang script.
 ### Step 5: Transpilation and Execution:
 If the validation is successful, the ONLang script is transpiled into a JavaScript file.
 The transpiled JavaScript file is then executed.
+
+## Dependencies
+
+- [TypeScript](https://www.typescriptlang.org/)
+- [NestJS](https://nestjs.com/)
+- [Ajv](https://github.com/ajv-validator/ajv)
