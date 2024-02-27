@@ -6,7 +6,6 @@ interface ONLangCommandOptions {}
 @Command({
   name: 'validate',
   description: 'validate JSON schema for ONLang',
-  options: { isDefault: true },
 })
 export class ValidateCommand extends CommandRunner {
   /**

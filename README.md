@@ -13,9 +13,12 @@
 [![GitHub license](https://img.shields.io/github/license/rajatasusual/on-lang.svg)](https://github.com/rajatasusual/on-lang/blob/main/LICENSE)
 [![GitHub forks](https://img.shields.io/github/forks/rajatasusual/on-lang)](https://github.com/rajatasusual/on-lang/network)
 [![GitHub issues](https://img.shields.io/github/issues/rajatasusual/on-lang)](https://github.com/rajatasusual/on-lang/issues)
+[![JS.org](https://img.shields.io/badge/JS.org-onlang-ffe70b)](https://onlang.js.org/)
+
 
 ## Description
 > **_NOTE:_**  This Language is in active development. Please read current stage of development [here](#stage)
+
 ONLang (Object Notation Language) is a markup-style programming language designed to define and interact with objects in a user-friendly and intuitive way. It is built on top of TypeScript, making it easy to use and extend.
 
 ## Features
@@ -34,6 +37,29 @@ This will install the ONLang package globally.
 
 ## Usage
 
+### ONLang Script file (.onl)
+```yaml
+!onlang
+Survey:
+    SurveyOptions:
+        Language: "en"
+        SurveyTitle: "User Satisfaction Survey"
+    Block:
+        Type: "Standard"
+        Questions:
+          QID1:
+            Type: "MultipleChoice"
+            Question: "How satisfied are you with our service?"
+            Options: ["Very Satisfied", "Satisfied", "Neutral", "Dissatisfied", "Very Dissatisfied"]
+          QID2:
+            Type: "Text"
+            Question: "Any additional comments or suggestions?"
+
+```
+>**_NOTE:_** The `!onlang` tag is required at the beginning of dynamic objects that need to be resolved and compiled at runtime. The validation is performed at compile time by the ONLang compiler using Validation Functions generated for schemas available at runtime.
+
+
+### ONLang CLI
 ```bash
 onlang [files(optional)]
 ```
@@ -42,32 +68,38 @@ onlang [files(optional)]
 
 files is optional. Without it, ONLang will read and compile all files in the current directory taking the schema path from the `onlang.schemaPath` config in .env file.
 
-
-## Examples
-
-```bash
-onlang test_schema.json test_schema2.json
-```
-
 ## Configuring .env file
 ```bash
 onlang.schemaPath=src/schemas
+```
+
+## Examples
+
+### Schema Validation
+```bash
+onlang validate test_schema.json test_schema2.json
+```
+
+### Script Parsing
+```bash
+onlang parse script.onl
 ```
 
 ## Command Options
 
 - `-h, --help`: Display this help message
 - `-v, --version`: Display the current version
-
+- `parse`: Parse ONLang script
+- `validate`: Validate JSON schema for ONLang script
 
 # Stage
 ### [DONE] Step 1: Read and Compile
 - **JSON Schema Conversion**:
 ONLang dynamically generates JSON schemas for objects from external systems (Qualtrics, Salesforce, etc.).
-These JSON schemas are validated using Ajv[here](https://github.com/ajv-validator/ajv) and are used to generate TypeScript classes.
+These JSON schemas are validated using Ajv [here](https://github.com/ajv-validator/ajv) and are used to generate Validation Functions.
 
-### Step 2: ONLang Scripting:
-Users create ONLang scripts that involve the creation of objects (e.g., Qualtrics survey) using the TypeScript classes generated from JSON schemas.
+### [ONGOING] Step 2: ONLang Scripting:
+Users create ONLang scripts that involve the creation of objects (e.g., Qualtrics survey) using the YAML syntax and onlang schema.
 
 ### Step 3: Dynamic Aspect Resolution:
 The ONLang compiler utilizes dynamic aspect resolution to understand and adapt to the schema for objects from external systems without explicit user-provided JSON schemas.

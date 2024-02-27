@@ -1,0 +1,15 @@
+!onlang
+Survey:
+    SurveyOptions:
+        Language: "en"
+        SurveyTitle: "User Satisfaction Survey"
+    Block:
+        Type: "Standard"
+        Questions:
+          QID1:
+            Type: "MultipleChoice"
+            Question: "How satisfied are you with our service?"
+            Options: ["Very Satisfied", "Satisfied", "Neutral", "Dissatisfied", "Very Dissatisfied"]
+          QID2:
+            Type: "Text"
+            Question: "Any additional comments or suggestions?"

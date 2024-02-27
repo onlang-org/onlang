@@ -33,10 +33,12 @@ describe('ValidateCommand', () => {
       // Mock the readAndValidate method to return mock ValidateFunctions
       const mockValidateFunction = {
         errors: null,
-        schema: { valueOf: jest.fn().mockResolvedValue({ "title": "Test" }) },
+        schema: { valueOf: jest.fn().mockResolvedValue({ title: 'Test' }) },
         schemaEnv: { valueOf: jest.fn() },
       } as unknown as ValidateFunction<unknown>;
-      jest.spyOn(validateServiceMock, 'readAndValidate').mockResolvedValue([mockValidateFunction]);
+      jest
+        .spyOn(validateServiceMock, 'readAndValidate')
+        .mockResolvedValue([mockValidateFunction]);
 
       // Mock console.log and console.error to spy on their calls
       const consoleLogSpy = jest.spyOn(console, 'log').mockImplementation();
@@ -44,7 +46,9 @@ describe('ValidateCommand', () => {
 
       await validateCommand.run(passedParams);
 
-      expect(validateServiceMock.readAndValidate).toHaveBeenCalledWith(passedParams);
+      expect(validateServiceMock.readAndValidate).toHaveBeenCalledWith(
+        passedParams,
+      );
       expect(consoleErrorSpy).not.toHaveBeenCalled();
       expect(consoleLogSpy).toHaveBeenCalled();
     });
@@ -58,14 +62,18 @@ describe('ValidateCommand', () => {
         schema: { valueOf: jest.fn() },
         schemaEnv: { valueOf: jest.fn() },
       } as unknown as ValidateFunction<unknown>;
-      jest.spyOn(validateServiceMock, 'readAndValidate').mockResolvedValue([mockValidateFunction]);
+      jest
+        .spyOn(validateServiceMock, 'readAndValidate')
+        .mockResolvedValue([mockValidateFunction]);
 
       // Mock console.log and console.error to spy on their calls
       const consoleErrorSpy = jest.spyOn(console, 'error').mockImplementation();
 
       await validateCommand.run(passedParams);
 
-      expect(validateServiceMock.readAndValidate).toHaveBeenCalledWith(passedParams);
+      expect(validateServiceMock.readAndValidate).toHaveBeenCalledWith(
+        passedParams,
+      );
       expect(consoleErrorSpy).toHaveBeenCalled();
     });
 
@@ -73,14 +81,18 @@ describe('ValidateCommand', () => {
       const passedParams = ['path/to/schema.json'];
 
       // Mock the readAndValidate method to throw an error
-      jest.spyOn(validateServiceMock, 'readAndValidate').mockRejectedValue(new Error('Validation error'));
+      jest
+        .spyOn(validateServiceMock, 'readAndValidate')
+        .mockRejectedValue(new Error('Validation error'));
 
       // Mock console.log and console.error to spy on their calls
       const consoleErrorSpy = jest.spyOn(console, 'error').mockImplementation();
 
       await validateCommand.run(passedParams);
 
-      expect(validateServiceMock.readAndValidate).toHaveBeenCalledWith(passedParams);
+      expect(validateServiceMock.readAndValidate).toHaveBeenCalledWith(
+        passedParams,
+      );
       expect(consoleErrorSpy).toHaveBeenCalled();
     });
   });
