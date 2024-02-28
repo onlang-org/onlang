@@ -3,13 +3,15 @@
 [readme]: https://github.com/rajatasusual/on-lang/blob/main/README.md
 [twitter]: https://twitter.com/rajatasusual
 
-# ONLang
+<table>
+  <tr>
+    <td>
+    <img src="https://raw.githubusercontent.com/rajatasusual/rajatasusual/master/onlang_shorthand.png" alt="onlang_shorthand" height="100">
+    </td>
+    <td>
+    
+**Information**
 
-> **_NOTE:_** Built on top of [TypeScript](https://www.typescriptlang.org/) and [NestJS](https://nestjs.com/)
-
-ONLang (Object Notation Language) is a markup-style programming language designed to define and interact with objects in a user-friendly and intuitive way. It is built on top of TypeScript, making it easy to use and extend.
-
-### Information
 [![JS.org](https://img.shields.io/badge/JS.org-Documentation-ffe70b)](https://onlang.js.org/)
 [![npm version](https://img.shields.io/npm/v/on-lang.svg)](https://www.npmjs.com/package/on-lang)
 [![npm downloads](https://img.shields.io/npm/dm/on-lang.svg)](https://www.npmjs.com/package/on-lang)
@@ -17,12 +19,21 @@ ONLang (Object Notation Language) is a markup-style programming language designe
 [![GitHub forks](https://img.shields.io/github/forks/rajatasusual/on-lang)](https://github.com/rajatasusual/on-lang/network)
 
 
-### Project Health
-[![CodeQL](https://github.com/rajatasusual/on-lang/actions/workflows/github-code-scanning/codeql/badge.svg)](https://github.com/rajatasusual/on-lang/actions/workflows/github-code-scanning/codeql)
+**Project Health**
+
+[![CodeQL](https://github.com/rajatasusual/on-lang/actions/workflows/codeql.yml/badge.svg?branch=master)](https://github.com/rajatasusual/on-lang/actions/workflows/codeql.yml)
 [![ESLint](https://github.com/rajatasusual/on-lang/actions/workflows/eslint.yml/badge.svg)](https://github.com/rajatasusual/on-lang/actions/workflows/eslint.yml)
 [![Node.js Package](https://github.com/rajatasusual/on-lang/actions/workflows/npm-test.yml/badge.svg)](https://github.com/rajatasusual/on-lang/actions/workflows/npm-test.yml)
 [![GitHub issues](https://img.shields.io/github/issues/rajatasusual/on-lang)](https://github.com/rajatasusual/on-lang/issues)
+    </td>
+  </tr>
+</table>
 
+> **_INFO:_** Built on top of [TypeScript](https://www.typescriptlang.org/) and [NestJS](https://nestjs.com/)
+
+<img src="https://raw.githubusercontent.com/rajatasusual/rajatasusual/master/onlang.png">
+<br>
+<br>
 
 # Table of Contents
 
@@ -31,9 +42,12 @@ ONLang (Object Notation Language) is a markup-style programming language designe
 - [Installation](#installation)
 - [Usage](#usage)
 - [Examples](#examples)
+- [Command Options](#command-options)
+- [Stage of Development](#stage-of-development)
 - [Contributing](#contributing)
 
 ## Description
+
 > **_NOTE:_**  This Language is in active development. Please read current stage of development [here](#stage)
 
 ## Features
@@ -53,6 +67,7 @@ This will install the ONLang package globally.
 ## Usage
 
 ### ONLang Script file (.onl)
+
 ```yaml
 !onlang
 Survey:
@@ -75,6 +90,7 @@ Survey:
 
 
 ### ONLang CLI
+
 ```bash
 onlang [files(optional)]
 ```
@@ -84,6 +100,7 @@ onlang [files(optional)]
 files is optional. Without it, ONLang will read and compile all files in the current directory taking the schema path from the `onlang.schemaPath` config in .env file.
 
 ## Configuring .env file
+
 ```bash
 onlang.schemaPath=src/schemas
 ```
@@ -91,11 +108,13 @@ onlang.schemaPath=src/schemas
 ## Examples
 
 ### Schema Validation
+
 ```bash
 onlang validate test_schema.json test_schema2.json
 ```
 
 ### Script Parsing
+
 ```bash
 onlang parse script.onl
 ```
@@ -107,24 +126,30 @@ onlang parse script.onl
 - `parse`: Parse ONLang script
 - `validate`: Validate JSON schema for ONLang script
 
-# Stage
+## Stage of Development
+
 ### [DONE] Step 1: Read and Compile
 - **JSON Schema Conversion**:
+
 ONLang dynamically generates JSON schemas for objects from external systems (Qualtrics, Salesforce, etc.).
 These JSON schemas are validated using Ajv [here](https://github.com/ajv-validator/ajv) and are used to generate Validation Functions.
 
 ### [ONGOING] Step 2: ONLang Scripting:
+
 Users create ONLang scripts that involve the creation of objects (e.g., Qualtrics survey) using the YAML syntax and onlang schema.
 
 ### Step 3: Dynamic Aspect Resolution:
+
 The ONLang compiler utilizes dynamic aspect resolution to understand and adapt to the schema for objects from external systems without explicit user-provided JSON schemas.
 
 ### Step 4: Validation in ONLang Compiler:
+
 The ONLang compiler validates ONLang scripts:
 Ensures that objects created conform to the dynamically resolved schema.
 Verifies the syntax and hierarchy of the ONLang script.
 
 ### Step 5: Transpilation and Execution:
+
 If the validation is successful, the ONLang script is transpiled into a JavaScript file.
 The transpiled JavaScript file is then executed.
 

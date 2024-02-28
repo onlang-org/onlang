@@ -9,6 +9,12 @@ import { UtilityService } from './util.service';
 export class ParseService {
   private onLangSchema: yaml.Schema;
 
+  /**
+   * Constructor for initializing config service and utility service.
+   *
+   * @param {ConfigService} configService - the configuration service
+   * @param {UtilityService} utilService - the utility service
+   */
   constructor(
     private readonly configService: ConfigService,
     private readonly utilService: UtilityService,
@@ -17,7 +23,8 @@ export class ParseService {
   }
 
   /**
-   * Initializes the schema for the class.
+   * Initializes the schema.
+   *
    */
   private initializeSchema() {
     const onlangTag = new yaml.Type('!onlang', {

@@ -8,6 +8,12 @@ import addFormat from 'ajv-formats';
 
 @Injectable()
 export class ValidateService {
+  /**
+   * Constructor for initializing the ConfigService and UtilityService.
+   *
+   * @param {ConfigService} configService - the config service for the application
+   * @param {UtilityService} utilService - the utility service for the application
+   */
   constructor(
     private readonly configService: ConfigService,
     private readonly utilService: UtilityService,
