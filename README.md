@@ -7,6 +7,8 @@
 
 > **_NOTE:_** Built on top of [TypeScript](https://www.typescriptlang.org/) and [NestJS](https://nestjs.com/)
 
+ONLang (Object Notation Language) is a markup-style programming language designed to define and interact with objects in a user-friendly and intuitive way. It is built on top of TypeScript, making it easy to use and extend.
+
 [![Node.js Package](https://github.com/rajatasusual/on-lang/actions/workflows/npm-test.yml/badge.svg)](https://github.com/rajatasusual/on-lang/actions/workflows/npm-test.yml)
 [![npm version](https://img.shields.io/npm/v/on-lang.svg)](https://www.npmjs.com/package/on-lang)
 [![npm downloads](https://img.shields.io/npm/dm/on-lang.svg)](https://www.npmjs.com/package/on-lang)
@@ -16,10 +18,17 @@
 [![JS.org](https://img.shields.io/badge/JS.org-onlang-ffe70b)](https://onlang.js.org/)
 
 
+# Table of Contents
+
+- [Description](#description)
+- [Features](#features)
+- [Installation](#installation)
+- [Usage](#usage)
+- [Examples](#examples)
+- [Contributing](#contributing)
+
 ## Description
 > **_NOTE:_**  This Language is in active development. Please read current stage of development [here](#stage)
-
-ONLang (Object Notation Language) is a markup-style programming language designed to define and interact with objects in a user-friendly and intuitive way. It is built on top of TypeScript, making it easy to use and extend.
 
 ## Features
 
@@ -113,8 +122,7 @@ Verifies the syntax and hierarchy of the ONLang script.
 If the validation is successful, the ONLang script is transpiled into a JavaScript file.
 The transpiled JavaScript file is then executed.
 
-## Dependencies
+## Contributing
 
-- [TypeScript](https://www.typescriptlang.org/)
-- [NestJS](https://nestjs.com/)
-- [Ajv](https://github.com/ajv-validator/ajv)
+If you'd like to contribute, please see [CONTRIBUTING.md](CONTRIBUTING.md)
+See code of conduct [here](CODE_OF_CONDUCT.md)
