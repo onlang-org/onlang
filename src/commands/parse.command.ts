@@ -17,10 +17,10 @@ export class ParseCommand extends CommandRunner {
    * Asynchronously runs the function with the given parameters and options.
    *
    * @param {string[]} passedParams - an array of strings representing the parameters
-   * @param {CommandOptions} [options] - optional options for the command
+   * @param {CommandOptions} [_options] - optional options for the command
    * @return {Promise<void>} a Promise that resolves when the function completes
    */
-  async run(passedParams: string[], options?: CommandOptions): Promise<void> {
+  async run(passedParams: string[], _options?: CommandOptions): Promise<void> {
     try {
       (await this.parseService.readAndParse(passedParams)).forEach(
         (returnObject) => {

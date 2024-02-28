@@ -9,13 +9,19 @@
 
 ONLang (Object Notation Language) is a markup-style programming language designed to define and interact with objects in a user-friendly and intuitive way. It is built on top of TypeScript, making it easy to use and extend.
 
-[![Node.js Package](https://github.com/rajatasusual/on-lang/actions/workflows/npm-test.yml/badge.svg)](https://github.com/rajatasusual/on-lang/actions/workflows/npm-test.yml)
+### Information
+[![JS.org](https://img.shields.io/badge/JS.org-Documentation-ffe70b)](https://onlang.js.org/)
 [![npm version](https://img.shields.io/npm/v/on-lang.svg)](https://www.npmjs.com/package/on-lang)
 [![npm downloads](https://img.shields.io/npm/dm/on-lang.svg)](https://www.npmjs.com/package/on-lang)
 [![GitHub license](https://img.shields.io/github/license/rajatasusual/on-lang.svg)](https://github.com/rajatasusual/on-lang/blob/main/LICENSE)
 [![GitHub forks](https://img.shields.io/github/forks/rajatasusual/on-lang)](https://github.com/rajatasusual/on-lang/network)
+
+
+### Project Health
+[![CodeQL](https://github.com/rajatasusual/on-lang/actions/workflows/github-code-scanning/codeql/badge.svg)](https://github.com/rajatasusual/on-lang/actions/workflows/github-code-scanning/codeql)
+[![ESLint](https://github.com/rajatasusual/on-lang/actions/workflows/eslint.yml/badge.svg)](https://github.com/rajatasusual/on-lang/actions/workflows/eslint.yml)
+[![Node.js Package](https://github.com/rajatasusual/on-lang/actions/workflows/npm-test.yml/badge.svg)](https://github.com/rajatasusual/on-lang/actions/workflows/npm-test.yml)
 [![GitHub issues](https://img.shields.io/github/issues/rajatasusual/on-lang)](https://github.com/rajatasusual/on-lang/issues)
-[![JS.org](https://img.shields.io/badge/JS.org-onlang-ffe70b)](https://onlang.js.org/)
 
 
 # Table of Contents
