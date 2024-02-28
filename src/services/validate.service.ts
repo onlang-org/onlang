@@ -3,10 +3,14 @@ import { ConfigService } from '@nestjs/config';
 import Ajv, { ValidateFunction } from 'ajv';
 import * as fs from 'fs';
 import path from 'path';
+import { UtilityService } from './util.service';
 
 @Injectable()
 export class ValidateService {
-  constructor(private readonly configService: ConfigService) {}
+  constructor(
+    private readonly configService: ConfigService,
+    private readonly utilService: UtilityService,
+  ) {}
 
   /**
    * Read and validate the given parameters.
@@ -15,7 +19,11 @@ export class ValidateService {
    * @return {Promise<Array<ValidateFunction>>} an array of validateFunctions
    */
   async readAndValidate(params: string[]): Promise<Array<ValidateFunction>> {
-    const files = await this.read(params);
+    const files = await this.utilService.readFiles(
+      params,
+      this.configService.get('onlang.schemaPath'),
+      'json',
+    );
 
     const validateFunctions: Array<ValidateFunction> = []; //array of validateFunctions
 
@@ -39,42 +47,6 @@ export class ValidateService {
   }
 
   /**
-   * Method to read files and directories.
-   *
-   * @param {string[]} params - array of file paths
-   * @return {Promise<string[]>} array of found file paths
-   */
-  async read(params: string[]): Promise<string[]> {
-    let foundFiles = [];
-    if (params.length === 0) {
-      const schemaPath = this.configService.get('onlang.schemaPath');
-      console.log(`Schema Directory: ${schemaPath}`);
-
-      //all files in directory schemaPath
-      try {
-        const files = await this.listFilesInDirectory(schemaPath);
-        files.forEach((file) => {
-          console.log(`Schema: ${file}`);
-          foundFiles.push(`${schemaPath}/${file}`);
-        });
-      } catch (error) {
-        throw new Error(`Error listing files: ${error.message}`);
-      }
-    } else {
-      params.forEach((file) => {
-        if (fs.existsSync(file)) {
-          foundFiles.push(file);
-          console.log(`Schema: ${file} exists'}`);
-        } else {
-          console.log(`Schema: ${file} does not exist`);
-        }
-      });
-    }
-
-    return foundFiles;
-  }
-
-  /**
    * Validates a given file using a JSON schema.
    *
    * @param {string} file - the file path to be validated
@@ -94,29 +66,5 @@ export class ValidateService {
     addFormats(ajv);
 
     return ajv.compile(jsonSchema);
-  }
-
-  /**
-   * A function that lists files in a directory.
-   *
-   * @param {string} directoryPath - the path of the directory
-   * @return {Promise<string[]>} a promise that resolves to an array of strings
-   */
-  async listFilesInDirectory(directoryPath: string): Promise<string[]> {
-    var re = /(?:\.([^.]+))?$/;
-
-    return new Promise((resolve, reject) => {
-      fs.readdir(directoryPath, (err, files) => {
-        if (err) {
-          reject(err);
-        } else {
-          resolve(
-            files.filter((file) => {
-              return re.exec(file)[1].toLocaleLowerCase() === 'json';
-            }),
-          );
-        }
-      });
-    });
   }
 }

@@ -1,11 +1,10 @@
 import { Module } from '@nestjs/common';
 import { ValidateCommand } from './commands/validate.command';
-import { ValidateService } from './services/validate.service';
 import { ParseCommand } from './commands/parse.command';
-import { ParseService } from './services/parse.service';
+import { ServiceModule } from './service.module';
 
 @Module({
-  imports: [],
-  providers: [ValidateCommand, ValidateService, ParseCommand, ParseService],
+  imports: [ServiceModule],
+  providers: [ParseCommand, ValidateCommand],
 })
 export class CommandModule {}

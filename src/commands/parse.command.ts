@@ -1,7 +1,7 @@
 import { Command, CommandRunner } from 'nest-commander';
 import { ParseService } from '../services/parse.service';
 
-interface ONLangCommandOptions {}
+interface CommandOptions {}
 
 @Command({
   name: 'parse',
@@ -17,13 +17,10 @@ export class ParseCommand extends CommandRunner {
    * Asynchronously runs the function with the given parameters and options.
    *
    * @param {string[]} passedParams - an array of strings representing the parameters
-   * @param {ONLangCommandOptions} [options] - optional options for the command
+   * @param {CommandOptions} [options] - optional options for the command
    * @return {Promise<void>} a Promise that resolves when the function completes
    */
-  async run(
-    passedParams: string[],
-    options?: ONLangCommandOptions,
-  ): Promise<void> {
+  async run(passedParams: string[], options?: CommandOptions): Promise<void> {
     try {
       (await this.parseService.readAndParse(passedParams)).forEach(
         (returnObject) => {

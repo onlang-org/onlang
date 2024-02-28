@@ -2,20 +2,27 @@ import { Test, TestingModule } from '@nestjs/testing';
 import { ConfigService } from '@nestjs/config';
 import { ValidateService } from '../../src/services/validate.service';
 import { ValidateFunction } from 'ajv';
+import { UtilityService } from '../../src/services/util.service';
 
 describe('ValidateService', () => {
   let validateService: ValidateService;
   let configServiceMock: ConfigService;
+  let utilityServiceMock: UtilityService;
 
   beforeEach(async () => {
     configServiceMock = {
       get: jest.fn(),
     } as unknown as ConfigService;
 
+    utilityServiceMock = {
+      readFiles: jest.fn(),
+    } as unknown as UtilityService;
+
     const module: TestingModule = await Test.createTestingModule({
       providers: [
         ValidateService,
         { provide: ConfigService, useValue: configServiceMock },
+        { provide: UtilityService, useValue: utilityServiceMock },
       ],
     }).compile();
 
@@ -25,7 +32,7 @@ describe('ValidateService', () => {
   describe('readAndValidate', () => {
     it('should throw an error if no files are found', async () => {
       // Mock the read method to return an empty array
-      jest.spyOn(validateService, 'read').mockResolvedValue([]);
+      jest.spyOn(utilityServiceMock, 'readFiles').mockReturnValue([]);
 
       await expect(validateService.readAndValidate([])).rejects.toThrowError(
         'No files found',
@@ -33,11 +40,13 @@ describe('ValidateService', () => {
     });
 
     it('should return an array of validateFunctions', async () => {
-      const file1 = './test_data/test.json';
-      const file2 = './test_data/qualtrics.json';
+      const file1: string = './test_data/test.json';
+      const file2: string = './test_data/qualtrics.json';
+
+      const files: string[] = [file1, file2];
 
       // Mock the read method to return file paths
-      jest.spyOn(validateService, 'read').mockResolvedValue([file1, file2]);
+      jest.spyOn(utilityServiceMock, 'readFiles').mockReturnValue(files);
 
       // Mock the validate method to return a mock ValidateFunction
       jest
@@ -62,17 +71,5 @@ describe('ValidateService', () => {
 
       expect(validateFunction).toBeDefined();
     });
-  });
-
-  describe('listFilesInDirectory', () => {
-    it('should return an array of file names', async () => {
-      const directoryPath = './test/test_data';
-
-      const files = await validateService.listFilesInDirectory(directoryPath);
-
-      expect(files).toHaveLength(2);
-    });
-
-    // Add more test cases for different scenarios
   });
 });

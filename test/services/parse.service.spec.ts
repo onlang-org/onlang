@@ -1,9 +1,11 @@
 import { Test, TestingModule } from '@nestjs/testing';
 import { ConfigService } from '@nestjs/config';
 import { ParseService } from '../../src/services/parse.service';
+import { UtilityService } from '../../src/services/util.service';
 
 describe('ParseService', () => {
   let parseService: ParseService;
+  let utilityServiceMock: UtilityService;
   let configServiceMock: ConfigService;
 
   beforeEach(async () => {
@@ -11,10 +13,15 @@ describe('ParseService', () => {
       get: jest.fn(),
     } as unknown as ConfigService;
 
+    utilityServiceMock = {
+      readFiles: jest.fn(),
+    } as unknown as UtilityService;
+
     const module: TestingModule = await Test.createTestingModule({
       providers: [
         ParseService,
         { provide: ConfigService, useValue: configServiceMock },
+        { provide: UtilityService, useValue: utilityServiceMock },
       ],
     }).compile();
 
@@ -24,7 +31,7 @@ describe('ParseService', () => {
   describe('readAndParse', () => {
     it('should throw an error if no files are found', async () => {
       // Mock the read method to return an empty array
-      jest.spyOn(parseService, 'read').mockResolvedValue([]);
+      jest.spyOn(utilityServiceMock, 'readFiles').mockReturnValue([]);
 
       await expect(parseService.readAndParse([])).rejects.toThrowError(
         'No files found',
@@ -35,7 +42,7 @@ describe('ParseService', () => {
       const file = './test_data/test.onl';
 
       // Mock the read method to return file paths
-      jest.spyOn(parseService, 'read').mockResolvedValue([file]);
+      jest.spyOn(utilityServiceMock, 'readFiles').mockReturnValue([file]);
 
       // Mock the Parse method to return a mock fileObject
       jest.spyOn(parseService, 'parse').mockResolvedValue(jest.fn() as unknown);
@@ -57,17 +64,5 @@ describe('ParseService', () => {
 
       expect(fileObject).toBeDefined();
     });
-  });
-
-  describe('listFilesInDirectory', () => {
-    it('should return an array of file names', async () => {
-      const directoryPath = './test/test_data';
-
-      const files = await parseService.listFilesInDirectory(directoryPath);
-
-      expect(files).toHaveLength(1);
-    });
-
-    // Add more test cases for different scenarios
   });
 });

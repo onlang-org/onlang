@@ -3,18 +3,16 @@ import { ConfigService } from '@nestjs/config';
 import fs from 'fs';
 import yaml from 'js-yaml';
 import path from 'path';
+import { UtilityService } from './util.service';
 
 @Injectable()
 export class ParseService {
-  private onLangSchema;
+  private onLangSchema: yaml.Schema;
 
-  /**
-   * Constructor for initializing the ConfigService.
-   *
-   * @param {ConfigService} configService - the configuration service
-   * @return {void}
-   */
-  constructor(private readonly configService: ConfigService) {
+  constructor(
+    private readonly configService: ConfigService,
+    private readonly utilService: UtilityService,
+  ) {
     this.initializeSchema();
   }
 
@@ -40,7 +38,11 @@ export class ParseService {
    * @return {Promise<Array<unknown>>} a promise that resolves to an array of parsed objects
    */
   async readAndParse(params: string[]): Promise<Array<unknown>> {
-    const files = await this.read(params);
+    const files = await this.utilService.readFiles(
+      params,
+      this.configService.get('onlang.scriptsPath'),
+      'onl',
+    );
 
     const fileObjects: Array<unknown> = []; //array of js-yaml return objects
 
@@ -64,42 +66,6 @@ export class ParseService {
   }
 
   /**
-   * Method to read files and directories.
-   *
-   * @param {string[]} params - array of file paths
-   * @return {Promise<string[]>} array of found file paths
-   */
-  async read(params: string[]): Promise<string[]> {
-    let foundFiles = [];
-    if (params.length === 0) {
-      const scriptsPath = this.configService.get('onlang.scriptsPath');
-      console.log(`Scripts Directory: ${scriptsPath}`);
-
-      //all files in directory schemaPath
-      try {
-        const files = await this.listFilesInDirectory(scriptsPath);
-        files.forEach((file) => {
-          console.log(`Script: ${file}`);
-          foundFiles.push(`${scriptsPath}/${file}`);
-        });
-      } catch (error) {
-        throw new Error(`Error listing files: ${error.message}`);
-      }
-    } else {
-      params.forEach((file) => {
-        if (fs.existsSync(file)) {
-          foundFiles.push(file);
-          console.log(`Script: ${file} exists'}`);
-        } else {
-          console.log(`Script: ${file} does not exist`);
-        }
-      });
-    }
-
-    return foundFiles;
-  }
-
-  /**
    * async function to parse a file and return a Promise of unknown type.
    *
    * @param {string} file - the path of the file to be parsed
@@ -116,29 +82,5 @@ export class ParseService {
     } catch (e) {
       throw new Error(`Error parsing: ${e.message}`);
     }
-  }
-
-  /**
-   * A function that lists files in a directory.
-   *
-   * @param {string} directoryPath - the path of the directory
-   * @return {Promise<string[]>} a promise that resolves to an array of strings
-   */
-  async listFilesInDirectory(directoryPath: string): Promise<string[]> {
-    var re = /(?:\.([^.]+))?$/;
-
-    return new Promise((resolve, reject) => {
-      fs.readdir(directoryPath, (err, files) => {
-        if (err) {
-          reject(err);
-        } else {
-          resolve(
-            files.filter((file) => {
-              return re.exec(file)[1].toLocaleLowerCase() === 'onl';
-            }),
-          );
-        }
-      });
-    });
   }
 }
