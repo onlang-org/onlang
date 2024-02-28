@@ -12,7 +12,7 @@ export class UtilityService {
    * @return {string[]} an array of file names with the specified file type
    */
   listFilesInDirectory(directoryPath: string, fileType: string): string[] {
-    var re = /(?:\.([^.]+))?$/;
+    const re = /(?:\.([^.]+))?$/;
 
     return fs.readdirSync(directoryPath).filter((file) => {
       return re.exec(file)[1].toLocaleLowerCase() === fileType;
@@ -28,7 +28,7 @@ export class UtilityService {
    * @return {string[]} array of found file paths
    */
   readFiles(params: string[], filesPath: string, fileType: string): string[] {
-    let foundFiles = [];
+    const foundFiles: string[] = [];
     if (params.length === 0) {
       console.log(`Files Directory: ${filesPath}`);
 

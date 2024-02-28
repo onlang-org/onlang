@@ -4,6 +4,7 @@ import Ajv, { ValidateFunction } from 'ajv';
 import * as fs from 'fs';
 import path from 'path';
 import { UtilityService } from './util.service';
+import addFormat from 'ajv-formats';
 
 @Injectable()
 export class ValidateService {
@@ -61,9 +62,7 @@ export class ValidateService {
       coerceTypes: true,
     });
 
-    const addFormats = require('ajv-formats').default;
-
-    addFormats(ajv);
+    addFormat(ajv);
 
     return ajv.compile(jsonSchema);
   }
