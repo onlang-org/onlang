@@ -12,9 +12,6 @@ name: ESLint
 on:
   push:
     branches: [ "master" ]
-    paths:
-      - 'src/**'
-      - 'test/**'
     paths-ignore:
       - '**/*.md'
       - '**/*.yml'
