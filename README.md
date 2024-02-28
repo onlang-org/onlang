@@ -3,14 +3,14 @@
 [readme]: https://github.com/rajatasusual/on-lang/blob/main/README.md
 [twitter]: https://twitter.com/rajatasusual
 
-<table>
-  <tr>
-    <td>
-    <img src="https://raw.githubusercontent.com/rajatasusual/rajatasusual/master/onlang_shorthand.png" alt="onlang_shorthand" height="100">
-    </td>
-    <td>
-    
-**Information**
+<img src="https://raw.githubusercontent.com/rajatasusual/rajatasusual/master/onlang_shorthand.png" alt="onlang_shorthand" height="100">
+
+ONLang (Object Notation Language) is a markup-style programming language designed to define and interact with objects in a user-friendly and intuitive way. It is built on top of TypeScript, making it easy to use and extend.
+
+> Built on top of [TypeScript](https://www.typescriptlang.org/) and [NestJS](https://nestjs.com/)
+
+
+**_Information_**
 
 [![JS.org](https://img.shields.io/badge/JS.org-Documentation-ffe70b)](https://onlang.js.org/)
 [![npm version](https://img.shields.io/npm/v/on-lang.svg)](https://www.npmjs.com/package/on-lang)
@@ -18,24 +18,16 @@
 [![GitHub license](https://img.shields.io/github/license/rajatasusual/on-lang.svg)](https://github.com/rajatasusual/on-lang/blob/main/LICENSE)
 [![GitHub forks](https://img.shields.io/github/forks/rajatasusual/on-lang)](https://github.com/rajatasusual/on-lang/network)
 
-
-**Project Health**
+**_Project Health_**
 
 [![CodeQL](https://github.com/rajatasusual/on-lang/actions/workflows/codeql.yml/badge.svg?branch=master)](https://github.com/rajatasusual/on-lang/actions/workflows/codeql.yml)
 [![ESLint](https://github.com/rajatasusual/on-lang/actions/workflows/eslint.yml/badge.svg)](https://github.com/rajatasusual/on-lang/actions/workflows/eslint.yml)
 [![Node.js Package](https://github.com/rajatasusual/on-lang/actions/workflows/npm-test.yml/badge.svg)](https://github.com/rajatasusual/on-lang/actions/workflows/npm-test.yml)
 [![GitHub issues](https://img.shields.io/github/issues/rajatasusual/on-lang)](https://github.com/rajatasusual/on-lang/issues)
-    </td>
-  </tr>
-</table>
 
-> **_INFO:_** Built on top of [TypeScript](https://www.typescriptlang.org/) and [NestJS](https://nestjs.com/)
 
-<img src="https://raw.githubusercontent.com/rajatasusual/rajatasusual/master/onlang.png">
-<br>
-<br>
 
-# Table of Contents
+## Table of Contents
 
 - [Description](#description)
 - [Features](#features)
