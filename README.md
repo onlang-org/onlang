@@ -1,7 +1,6 @@
 [npm]: https://www.npmjs.com/package/on-lang
-[github]: https://github.com/rajatasusual/on-lang
-[readme]: https://github.com/rajatasusual/on-lang/blob/main/README.md
-[twitter]: https://twitter.com/rajatasusual
+[github]: https://github.com/onlang-org/onlang
+[readme]: https://github.com/onlang-org/onlang/blob/main/README.md
 
 <img src="https://raw.githubusercontent.com/rajatasusual/rajatasusual/master/onlang_shorthand.png" alt="onlang_shorthand" height="100">
 
@@ -15,22 +14,22 @@ ONLang (Object Notation Language) is a markup-style programming language designe
 [![JS.org](https://img.shields.io/badge/JS.org-Documentation-ffe70b)](https://onlang.js.org/)
 [![npm version](https://img.shields.io/npm/v/on-lang.svg)](https://www.npmjs.com/package/on-lang)
 [![npm downloads](https://img.shields.io/npm/dm/on-lang.svg)](https://www.npmjs.com/package/on-lang)
-[![GitHub license](https://img.shields.io/github/license/rajatasusual/on-lang.svg)](https://github.com/rajatasusual/on-lang/blob/main/LICENSE)
-[![GitHub forks](https://img.shields.io/github/forks/rajatasusual/on-lang)](https://github.com/rajatasusual/on-lang/network)
+[![GitHub license](https://img.shields.io/github/license/onlang-org/onlang.svg)](https://github.com/onlang-org/onlang/blob/main/LICENSE)
+[![GitHub forks](https://img.shields.io/github/forks/onlang-org/onlang)](https://github.com/onlang-org/onlang/network)
 
 **_Project Health_**
 
-[![CodeQL](https://github.com/rajatasusual/on-lang/actions/workflows/codeql.yml/badge.svg?branch=master)](https://github.com/rajatasusual/on-lang/actions/workflows/codeql.yml)
-[![ESLint](https://github.com/rajatasusual/on-lang/actions/workflows/eslint.yml/badge.svg)](https://github.com/rajatasusual/on-lang/actions/workflows/eslint.yml)
-[![Node.js Package](https://github.com/rajatasusual/on-lang/actions/workflows/npm-test.yml/badge.svg)](https://github.com/rajatasusual/on-lang/actions/workflows/npm-test.yml)
-[![GitHub issues](https://img.shields.io/github/issues/rajatasusual/on-lang)](https://github.com/rajatasusual/on-lang/issues)
+[![CodeQL](https://github.com/onlang-org/onlang/actions/workflows/codeql.yml/badge.svg?branch=master)](https://github.com/onlang-org/onlang/actions/workflows/codeql.yml)
+[![ESLint](https://github.com/onlang-org/onlang/actions/workflows/eslint.yml/badge.svg)](https://github.com/onlang-org/onlang/actions/workflows/eslint.yml)
+[![Node.js Package](https://github.com/onlang-org/onlang/actions/workflows/npm-test.yml/badge.svg)](https://github.com/onlang-org/onlang/actions/workflows/npm-test.yml)
+[![GitHub issues](https://img.shields.io/github/issues/onlang-org/onlang)](https://github.com/onlang-org/onlang/issues)
 
-ONLang works with any JSON schema. Currently it offers a helper package to fetch and validate JSON schemas. See [onl-schema-tools](https://github.com/rajatasusual/onl-schema-tools) for more information. This is the default registry for ONLang schemas with examples and documentation. To download the package, run:
+ONLang works with any JSON schema. Currently it offers a helper package to fetch and validate JSON schemas. See [onl-schema-tools](https://github.com/onlang-org/onl-schema-tools) for more information. This is the default registry for ONLang schemas with examples and documentation. To download the package, run:
 
 ```bash
 npm install onl-schema-tools
 ```
-More details can be found in the [README](https://github.com/rajatasusual/onl-schema-tools/blob/main/README.md).
+More details can be found in the [README](https://github.com/onlang-org/onl-schema-tools/blob/main/README.md).
 
 ## Table of Contents
 

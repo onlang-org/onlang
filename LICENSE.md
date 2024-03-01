@@ -1,6 +1,6 @@
 MIT License
 
-Copyright (c) 2024 rajatasusual <https://github.com/rajatasusual>
+Copyright (c) 2024 onlang-org <https://github.com/onlang-org>
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal

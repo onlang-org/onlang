@@ -1,17 +1,17 @@
 {
   "name": "on-lang",
-  "version": "0.0.3",
+  "version": "0.0.5",
   "description": "ONLang (Object Notation Language) is a markup-style programming language designed to define and interact with objects in a user-friendly and intuitive way. It is built on top of TypeScript, making it easy to use and extend.",
   "author": {
-    "url": "rajatasusual <https://github.com/rajatasusual>",
-    "name": "Rajat Kumar"
+    "url": "onlang-org <https://github.com/onlang-org>",
+    "name": "ONLang.org"
   },
   "homepage": "https://onlang.js.org/",
   "license": "MIT",
   "main": "dist/main.js",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/rajatasusual/on-lang.git"
+    "url": "git+https://github.com/onlang-org/onlang.git"
   },
   "scripts": {
     "build": "npm run format && nest build",
@@ -94,7 +94,8 @@
     "markup",
     "language",
     "transpiler",
-    "ajv"
+    "ajv",
+    "onst"
   ],
   "files": [
     "dist/**/*.js"
