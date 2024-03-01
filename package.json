@@ -1,6 +1,6 @@
 {
   "name": "on-lang",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "ONLang (Object Notation Language) is a markup-style programming language designed to define and interact with objects in a user-friendly and intuitive way. It is built on top of TypeScript, making it easy to use and extend.",
   "author": {
     "url": "rajatasusual <https://github.com/rajatasusual>",
@@ -27,7 +27,8 @@
     "test:cov": "jest --coverage",
     "test:debug": "node --inspect-brk -r tsconfig-paths/register -r ts-node/register node_modules/.bin/jest --runInBand",
     "test:e2e": "jest --config ./test/jest-e2e.json",
-    "onlang": "ts-node ./src/main.ts"
+    "onlang": "ts-node ./src/main.ts",
+    "pack": "npm pack && tar -xvzf *.tgz && rm -rf package *.tgz"
   },
   "bin": {
     "onlang": "./scripts/index.js"
@@ -94,5 +95,8 @@
     "language",
     "transpiler",
     "ajv"
+  ],
+  "files": [
+    "dist/**/*.js"
   ]
 }

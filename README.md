@@ -25,7 +25,12 @@ ONLang (Object Notation Language) is a markup-style programming language designe
 [![Node.js Package](https://github.com/rajatasusual/on-lang/actions/workflows/npm-test.yml/badge.svg)](https://github.com/rajatasusual/on-lang/actions/workflows/npm-test.yml)
 [![GitHub issues](https://img.shields.io/github/issues/rajatasusual/on-lang)](https://github.com/rajatasusual/on-lang/issues)
 
+ONLang works with any JSON schema. Currently it offers a helper package to fetch and validate JSON schemas. See [onl-schema-tools](https://github.com/rajatasusual/onl-schema-tools) for more information. This is the default registry for ONLang schemas with examples and documentation. To download the package, run:
 
+```bash
+npm install onl-schema-tools
+```
+More details can be found in the [README](https://github.com/rajatasusual/onl-schema-tools/blob/main/README.md).
 
 ## Table of Contents
 
