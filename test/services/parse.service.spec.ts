@@ -31,7 +31,7 @@ describe('ParseService', () => {
   describe('readAndParse', () => {
     it('should throw an error if no files are found', async () => {
       // Mock the read method to return an empty array
-      jest.spyOn(utilityServiceMock, 'readFiles').mockReturnValue([]);
+      jest.spyOn(utilityServiceMock, 'readFiles').mockResolvedValue([]);
 
       await expect(parseService.readAndParse([])).rejects.toThrowError(
         'No files found',
@@ -42,7 +42,7 @@ describe('ParseService', () => {
       const file = './test_data/test.onl';
 
       // Mock the read method to return file paths
-      jest.spyOn(utilityServiceMock, 'readFiles').mockReturnValue([file]);
+      jest.spyOn(utilityServiceMock, 'readFiles').mockResolvedValue([file]);
 
       // Mock the Parse method to return a mock fileObject
       jest.spyOn(parseService, 'parse').mockResolvedValue(jest.fn() as unknown);

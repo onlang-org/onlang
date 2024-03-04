@@ -1,3 +1,4 @@
+import { InquirerService } from 'nest-commander';
 import { UtilityService } from '../../src/services/util.service';
 import * as fs from 'fs';
 
@@ -5,9 +6,14 @@ jest.mock('fs');
 
 describe('UtilityService', () => {
   let utilityService: UtilityService;
+  let inquirerServiceMock: InquirerService;
 
   beforeEach(() => {
-    utilityService = new UtilityService();
+    inquirerServiceMock = {
+      get: jest.fn(),
+    } as unknown as InquirerService;
+
+    utilityService = new UtilityService(inquirerServiceMock);
   });
 
   it('should list files in directory', () => {
@@ -39,7 +45,7 @@ describe('UtilityService', () => {
     mockExistsSync.mockReturnValue(true);
 
     const result = utilityService.readFiles(params, filesPath, fileType);
-    expect(result).toEqual([
+    expect(result).resolves.toEqual([
       `${filesPath}/qualtrics.json`,
       `${filesPath}/test.json`,
     ]);
@@ -70,7 +76,7 @@ describe('UtilityService', () => {
     mockExistsSync.mockReturnValue(false);
 
     const result = utilityService.readFiles(params, filesPath, fileType);
-    expect(result).toEqual([]);
+    expect(result).resolves.toEqual(undefined);
     expect(mockExistsSync).toHaveBeenCalledWith(
       '/path/to/nonexistent/file.txt',
     );

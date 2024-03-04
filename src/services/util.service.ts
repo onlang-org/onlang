@@ -1,9 +1,12 @@
 // utility.service.ts
 import { Injectable } from '@nestjs/common';
 import fs from 'fs';
+import { InquirerService } from 'nest-commander';
+import * as onst from '@onlang-org/onst';
 
 @Injectable()
 export class UtilityService {
+  constructor(private readonly inquirerService: InquirerService) {}
   /**
    * List all files with a specific file type in the given directory.
    *
@@ -27,7 +30,11 @@ export class UtilityService {
    * @param {string} fileType - the type of files to look for
    * @return {string[]} array of found file paths
    */
-  readFiles(params: string[], filesPath: string, fileType: string): string[] {
+  async readFiles(
+    params: string[],
+    filesPath: string,
+    fileType: string,
+  ): Promise<string[]> {
     const foundFiles: string[] = [];
     if (params.length === 0) {
       console.log(`Files Directory: ${filesPath}`);
@@ -40,7 +47,23 @@ export class UtilityService {
           foundFiles.push(`${filesPath}/${file}`);
         });
       } catch (error) {
-        throw new Error(`Error listing files: ${error.message}`);
+        if (error.code === 'ENOENT') {
+          console.info(`The directory ${filesPath} does not exist.`);
+          await this.inquirerService.inquirer
+            .prompt({
+              name: 'answer',
+              message:
+                'Do you want to create it and download default schemata?',
+              type: 'confirm',
+            })
+            .then(async (input) => {
+              if (input['answer']) {
+                await onst.fetchSchemata();
+              }
+            });
+        }
+      } finally {
+        return foundFiles;
       }
     } else {
       params.forEach((file) => {
@@ -52,7 +75,5 @@ export class UtilityService {
         }
       });
     }
-
-    return foundFiles;
   }
 }

@@ -32,7 +32,7 @@ describe('ValidateService', () => {
   describe('readAndValidate', () => {
     it('should throw an error if no files are found', async () => {
       // Mock the read method to return an empty array
-      jest.spyOn(utilityServiceMock, 'readFiles').mockReturnValue([]);
+      jest.spyOn(utilityServiceMock, 'readFiles').mockResolvedValue([]);
 
       await expect(validateService.readAndValidate([])).rejects.toThrowError(
         'No files found',
@@ -46,7 +46,7 @@ describe('ValidateService', () => {
       const files: string[] = [file1, file2];
 
       // Mock the read method to return file paths
-      jest.spyOn(utilityServiceMock, 'readFiles').mockReturnValue(files);
+      jest.spyOn(utilityServiceMock, 'readFiles').mockResolvedValue(files);
 
       // Mock the validate method to return a mock ValidateFunction
       jest
