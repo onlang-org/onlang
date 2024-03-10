@@ -24,12 +24,7 @@ ONLang (Object Notation Language) is a markup-style programming language designe
 [![Node.js Package](https://github.com/onlang-org/onlang/actions/workflows/npm-test.yml/badge.svg)](https://github.com/onlang-org/onlang/actions/workflows/npm-test.yml)
 [![GitHub issues](https://img.shields.io/github/issues/onlang-org/onlang)](https://github.com/onlang-org/onlang/issues)
 
-> **_Note_** ONLang works with any JSON schema. Currently it offers a helper package to fetch and validate JSON schemas. See [onst](https://github.com/onlang-org/onst) for more information. This is the default registry for ONLang schemas with examples and documentation. More details can be found in the [README](https://github.com/onlang-org/onst/blob/main/README.md).
- To download the package, run:
-
-```bash
-npm install @onlang-org/onst
-```
+> **_Note_** ONLang works with any JSON schema. Currently it offers a helper package to fetch and validate JSON schemas. See [onst](https://www.npmjs.com/package/@onlang-org/onst) for more information. This is the default registry for ONLang schemas with examples and documentation. More details can be found in the [README](https://github.com/onlang-org/onst/blob/main/README.md).
 
 ## Table of Contents
 

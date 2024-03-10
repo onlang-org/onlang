@@ -54,7 +54,7 @@ export class ParseService {
     const fileObjects: Array<unknown> = []; //array of js-yaml return objects
 
     if (files.length === 0) {
-      throw new Error('No files found');
+      console.error('No files found');
     } else {
       console.log(`parsing ${files.length} files`);
 

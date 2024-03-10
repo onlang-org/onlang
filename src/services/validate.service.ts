@@ -35,7 +35,7 @@ export class ValidateService {
     const validateFunctions: Array<ValidateFunction> = []; //array of validateFunctions
 
     if (files.length === 0) {
-      throw new Error('No files found');
+      console.error('No files found');
     } else {
       console.log(`validating ${files.length} files`);
 
