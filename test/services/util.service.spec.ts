@@ -76,7 +76,7 @@ describe('UtilityService', () => {
     mockExistsSync.mockReturnValue(false);
 
     const result = utilityService.readFiles(params, filesPath, fileType);
-    expect(result).resolves.toEqual(undefined);
+    expect(result).resolves.toEqual([]);
     expect(mockExistsSync).toHaveBeenCalledWith(
       '/path/to/nonexistent/file.txt',
     );

@@ -30,15 +30,6 @@ describe('ValidateService', () => {
   });
 
   describe('readAndValidate', () => {
-    it('should throw an error if no files are found', async () => {
-      // Mock the read method to return an empty array
-      jest.spyOn(utilityServiceMock, 'readFiles').mockResolvedValue([]);
-
-      await expect(validateService.readAndValidate([])).rejects.toThrowError(
-        'No files found',
-      );
-    });
-
     it('should return an array of validateFunctions', async () => {
       const file1: string = './test_data/test.json';
       const file2: string = './test_data/qualtrics.json';

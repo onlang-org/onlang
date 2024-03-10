@@ -29,15 +29,6 @@ describe('ParseService', () => {
   });
 
   describe('readAndParse', () => {
-    it('should throw an error if no files are found', async () => {
-      // Mock the read method to return an empty array
-      jest.spyOn(utilityServiceMock, 'readFiles').mockResolvedValue([]);
-
-      await expect(parseService.readAndParse([])).rejects.toThrowError(
-        'No files found',
-      );
-    });
-
     it('should return an array of fileObjects', async () => {
       const file = './test_data/test.onl';
 

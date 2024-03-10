@@ -6,7 +6,7 @@ import * as onst from '@onlang-org/onst';
 
 @Injectable()
 export class UtilityService {
-  constructor(private readonly inquirerService: InquirerService) { }
+  constructor(private readonly inquirerService: InquirerService) {}
   /**
    * List all files with a specific file type in the given directory.
    *
@@ -35,7 +35,6 @@ export class UtilityService {
     filesPath: string,
     fileType: string,
   ): Promise<string[]> {
-    
     const foundFiles: string[] = [];
 
     if (params.length === 0) {
@@ -62,14 +61,19 @@ export class UtilityService {
                 })
                 .then(async (input) => {
                   if (input['answer']) {
-                    await this.inquirerService.inquirer.prompt({
-                      name: 'answer',
-                      message: 'Where do you want to download the schemata from?',
-                      type: 'list',
-                      choices: ['onst', 'Schemastore']
-                    }).then(async (input) => {
-                      await onst.fetchSchemata(input['answer'] === 'Schemastore');
-                    })
+                    await this.inquirerService.inquirer
+                      .prompt({
+                        name: 'answer',
+                        message:
+                          'Where do you want to download the schemata from?',
+                        type: 'list',
+                        choices: ['onst', 'Schemastore'],
+                      })
+                      .then(async (input) => {
+                        await onst.fetchSchemata(
+                          input['answer'] === 'Schemastore',
+                        );
+                      });
                   }
                 });
               break;
@@ -85,15 +89,16 @@ export class UtilityService {
                   if (input['answer']) {
                     const source = await this.inquirerService.inquirer.prompt({
                       name: 'answer',
-                      message: 'Where do you want to download the examples from?',
+                      message:
+                        'Where do you want to download the examples from?',
                       type: 'list',
-                      choices: ['onst', 'Schemastore']
+                      choices: ['onst', 'Schemastore'],
                     });
 
                     await onst.generateExampleONL({
                       schemastore: source['answer'] === 'Schemastore',
                       write: true,
-                      destination: filesPath
+                      destination: filesPath,
                     });
                   }
                 });
