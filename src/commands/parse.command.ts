@@ -22,16 +22,14 @@ export class ParseCommand extends CommandRunner {
    */
   async run(passedParams: string[], _options?: CommandOptions): Promise<void> {
     try {
-      (await this.parseService.readAndParse(passedParams)).forEach(
-        (returnObject) => {
-          if (returnObject) {
-            const parsedFileObject = (returnObject as any).data;
-            console.log(Object.keys(parsedFileObject)[0] + ' is valid');
-          } else {
-            console.error(returnObject);
-          }
-        },
-      );
+      const fileObjects = await this.parseService.readAndParse(passedParams);
+      for (const returnObject of fileObjects) {
+        if (returnObject) {
+          console.log(Object.keys(returnObject)[0] + ' is valid');
+        } else {
+          console.error(returnObject + ' is invalid');
+        }
+      }
     } catch (error) {
       console.error(error);
     }

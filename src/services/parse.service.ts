@@ -58,7 +58,7 @@ export class ParseService {
     } else {
       console.log(`parsing ${files.length} files`);
 
-      files.forEach(async (file) => {
+      for (const file of files) {
         console.log(`parsing ${file}`);
         try {
           const fileObject = await this.parse(file);
@@ -66,7 +66,7 @@ export class ParseService {
         } catch (error) {
           console.error(`Error parsing ${file}: ${error.message}`);
         }
-      });
+      }
     }
 
     return fileObjects;
