@@ -42,7 +42,7 @@ describe('ValidateService', () => {
       // Mock the validate method to return a mock ValidateFunction
       jest
         .spyOn(validateService, 'validate')
-        .mockResolvedValue(jest.fn() as unknown as ValidateFunction);
+        .mockReturnValue(jest.fn() as unknown as ValidateFunction);
 
       const validateFunctions = await validateService.readAndValidate([]);
 

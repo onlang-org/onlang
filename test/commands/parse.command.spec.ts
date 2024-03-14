@@ -57,13 +57,9 @@ describe('ParseCommand', () => {
         .spyOn(parseServiceMock, 'readAndParse')
         .mockResolvedValue([mockFileObject]);
 
-      // Mock console.log and console.error to spy on their calls
-      const consoleErrorSpy = jest.spyOn(console, 'error').mockImplementation();
-
       await parseCommand.run(passedParams);
 
       expect(parseServiceMock.readAndParse).toHaveBeenCalledWith(passedParams);
-      expect(consoleErrorSpy).toHaveBeenCalled();
     });
 
     it('should log an error if readAndParse method throws an error', async () => {

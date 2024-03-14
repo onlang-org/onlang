@@ -32,14 +32,14 @@ export class ValidateService {
       'json',
     );
 
-    const validateFunctions: Array<ValidateFunction> = []; //array of validateFunctions
+    const validateFunctions: Array<ValidateFunction> = [];
 
     if (files.length === 0) {
       console.error('No files found');
     } else {
       console.log(`validating ${files.length} files`);
 
-      files.forEach(async (file) => {
+      for (const file of files) {
         console.log(`validating ${file}`);
         try {
           const validateFunction = await this.validate(file);
@@ -47,22 +47,31 @@ export class ValidateService {
         } catch (error) {
           console.error(`Error validating ${file}: ${error.message}`);
         }
-      });
+      }
     }
 
     return validateFunctions;
   }
 
   /**
-   * Validates a given file using a JSON schema.
+   * Validate a JSON schema file using Ajv.
    *
-   * @param {string} file - the file path to be validated
-   * @return {Promise<ValidateFunction>} a Promise that resolves to a function for validating the JSON schema
+   * @param {string} file - the path to the JSON schema file
+   * @return {ValidateFunction} a function for validating data against the JSON schema
    */
-  async validate(file: string): Promise<ValidateFunction> {
+  validate(file: string): ValidateFunction {
     const jsonSchema = {
       ...JSON.parse(fs.readFileSync(path.resolve(file), 'utf8')),
     } as const;
+
+    if (jsonSchema.$schema) {
+      delete jsonSchema.$schema;
+    }
+
+    if (jsonSchema.id) {
+      delete jsonSchema.id;
+    }
+
     const ajv = new Ajv({
       strict: false,
       coerceTypes: true,

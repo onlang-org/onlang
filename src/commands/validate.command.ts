@@ -27,19 +27,20 @@ export class ValidateCommand extends CommandRunner {
    */
   async run(passedParams: string[], _options?: CommandOptions): Promise<void> {
     try {
-      (await this.validateService.readAndValidate(passedParams)).forEach(
-        (validateFunction) => {
-          if (validateFunction.errors) {
-            validateFunction.errors.forEach((error) => {
-              console.error(error);
-            });
-          } else {
-            console.log(
-              validateFunction.schema.valueOf()['title'] + ' Schema is valid',
-            );
-          }
-        },
-      );
+      const validateFunctions =
+        await this.validateService.readAndValidate(passedParams);
+
+      for (const validateFunction of validateFunctions) {
+        if (validateFunction.errors) {
+          validateFunction.errors.forEach((error) => {
+            console.error(error);
+          });
+        } else {
+          console.log(
+            validateFunction.schema.valueOf()['title'] + ' Schema is valid',
+          );
+        }
+      }
     } catch (error) {
       console.error(error);
     }
